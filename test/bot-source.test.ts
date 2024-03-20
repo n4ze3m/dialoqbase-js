@@ -18,7 +18,7 @@ describe("Bot Source Module", () => {
     let errorFile: Buffer
     let sourceToDelete: string = ""
     let sourceToUpdate: string = ""
-
+    
     beforeEach(async () => {
         const { data: bots } = await dialoqbase.bot.listAll()
         const bot = bots?.find(bot => bot.source.length > 0)

@@ -8,9 +8,9 @@ import type { FileBody, Source, SourceData } from './types'
  *
  */
 export class BotSource {
-  protected url: string
-  protected fetch: Fetch
-  protected apiKey: string
+  private url: string
+  private fetch: Fetch
+  private apiKey: string
 
   /**
    * Creates a new instance of BotSource.

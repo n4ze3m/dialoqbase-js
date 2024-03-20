@@ -7,9 +7,8 @@ import type { DialoqbaseCoreSettings, Model, User } from './types'
  * Represents an Admin Client for interacting with the server.
  */
 export class AdminClient {
-  protected url: string
-  protected fetch: Fetch
-
+  private url: string
+  private fetch: Fetch
   /**
    * Creates a new instance of AdminClient.
    * @param url - The base URL of the server.
