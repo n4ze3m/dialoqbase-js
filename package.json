@@ -1,7 +1,7 @@
 {
   "name": "dialoqbase",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "packageManager": "pnpm@8.15.3",
   "description": "A client library for Dialoqbase",
   "author": "Muhammed Nazeem <n4ze3m@gmail.com>",
@@ -47,6 +47,10 @@
     "typecheck": "tsc --noEmit",
     "prepare": "simple-git-hooks"
   },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "zod": "^3.22.4"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^2.6.4",
     "@antfu/ni": "^0.21.12",
@@ -70,9 +74,5 @@
   },
   "lint-staged": {
     "*": "eslint --fix"
-  },
-  "dependencies": {
-    "axios": "^1.6.8",
-    "zod": "^3.22.4"
   }
 }
