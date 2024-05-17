@@ -1,8 +1,7 @@
 {
   "name": "dialoqbase",
   "type": "module",
-  "version": "0.2.0",
-  "packageManager": "pnpm@8.15.3",
+  "version": "0.2.1",
   "description": "A client library for Dialoqbase",
   "author": "Muhammed Nazeem <n4ze3m@gmail.com>",
   "license": "MIT",
