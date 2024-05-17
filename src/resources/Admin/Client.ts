@@ -1,7 +1,7 @@
 import type { DialoqbaseFetchError } from '../../utils/error'
 import { errorResponse } from '../../utils/error'
 import type { Fetch } from '../../utils/fetch'
-import type { DialoqbaseCoreSettings, Model, User } from './types'
+import type { DialoqbaseCoreSettings, Model, RagSettings, User } from './types'
 
 /**
  * Represents an Admin Client for interacting with the server.
@@ -110,7 +110,7 @@ export class AdminClient {
       data: null
       error: DialoqbaseFetchError
     }
-    > {
+  > {
     const response = await this.fetch(`${this.url}/models`)
     if (!response.ok)
       return await errorResponse(response)
@@ -118,6 +118,36 @@ export class AdminClient {
     const res = await response.json() as { data: Model[] }
     return {
       data: res.data,
+      error: null,
+    }
+  }
+
+  /**
+   * Update the RAG settings.
+   *
+   * @param settings -  The RAG settings to update.
+   * @returns A promise that resolves to an object with `data` and `error` properties.
+   */
+  async updateRagSettings(settings: RagSettings): Promise<{
+    data: boolean
+    error: null
+  } |
+  {
+    data: null
+    error: DialoqbaseFetchError
+  }> {
+    const response = await this.fetch(`${this.url}/rag-settings`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(settings),
+    })
+    if (!response.ok)
+      return await errorResponse(response)
+
+    return {
+      data: true,
       error: null,
     }
   }

@@ -2,8 +2,8 @@ import { describe, expect, it } from 'vitest'
 import { createClient } from '../src'
 
 const dialoqbase = createClient(
-  'http://localhost:3000',
-  'db_ed2e9ded3f8a46a89063fee4590179b5',
+  process.env.DIALOQBASE_API_URL ?? 'http://localhost:3000',
+  process.env.DIALOQBASE_API_KEY ?? 'db_f72f42a139d14cbfb26b2f43344f17e2',
 )
 
 describe('bot Module', () => {
@@ -48,6 +48,7 @@ describe('bot Module', () => {
       temperature: 0.5,
       use_hybrid_search: false,
       use_rag: false,
+      no_of_documents_to_retrieve: 40
     }
     const updated = await dialoqbase.bot.update(botForDelete, data)
 

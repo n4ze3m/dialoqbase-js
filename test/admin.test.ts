@@ -3,8 +3,8 @@ import { describe, expect, it } from 'vitest'
 
 
 const dialoqbase = createClient(
-    "http://localhost:3000",
-    "db_ed2e9ded3f8a46a89063fee4590179b5"
+    process.env.DIALOQBASE_API_URL ?? 'http://localhost:3000',
+    process.env.DIALOQBASE_API_KEY ?? 'db_f72f42a139d14cbfb26b2f43344f17e2',
 )
 
 
@@ -47,5 +47,14 @@ describe("Admin Module", () => {
     it("should return array of all models", async () => {
         const models = await dialoqbase.admin.getAllModels()
         expect(models.data).toBeInstanceOf(Array)
+    })
+
+
+    it("should save new rag settings", async () => {
+        const updated = await dialoqbase.admin.updateRagSettings({
+            defaultChunkOverlap: 2000,
+            defaultChunkSize: 10000
+        })
+        expect(updated.data).toBe(true)
     })
 })

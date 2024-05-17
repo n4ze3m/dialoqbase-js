@@ -5,8 +5,8 @@ import FormData from "form-data"
 
 
 const dialoqbase = createClient(
-    "http://localhost:3000",
-    "db_ed2e9ded3f8a46a89063fee4590179b5"
+    process.env.DIALOQBASE_API_URL ?? 'http://localhost:3000',
+    process.env.DIALOQBASE_API_KEY ?? 'db_f72f42a139d14cbfb26b2f43344f17e2',
 )
 
 

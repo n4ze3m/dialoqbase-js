@@ -145,7 +145,11 @@ export class BotClient {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(bot),
+      body: JSON.stringify({
+        ...bot,
+        noOfDocumentsToRetrieve: bot?.no_of_documents_to_retrieve,
+        no_of_documents_to_retrieve: undefined,
+      }),
     })
 
     if (!response.ok)
